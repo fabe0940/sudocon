@@ -1,0 +1,32 @@
+SUMMARY
+
+For this assignment I am going to write a Sudoku solver in Unicon that uses
+recursion, generators, or both to find its solution(s).
+
+The input to the program will be a file file name, given on the command line,
+and the program will read its first command line argument, open it, and read in
+9 lines, each of which contains 9 values specified by one character each,
+seperated by 8 spaces. The values will be ASCII digits 1-9 or an underscore '_'
+to indicate an empty position.
+
+Your solution should be written to standard output in the same format as the
+input data file, with the underscores replaced by digits.
+
+
+COMPILING
+
+Just run the `make` command.
+
+
+RUNNING
+
+Now run it!
+
+$ ./hw2
+
+
+ABOUT
+
+Written on 6 October 2014
+
+Licensed under the WTF Public License.
