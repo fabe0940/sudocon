@@ -1,6 +1,6 @@
 CC = unicon
-APPLICATION_NAME = hw2
-FILES = sudocon.icn
+OBJ = sudocon.u io.u solve.u
+APPLICATION_NAME = sudocon
 
 .PHONY : all rebuild clean
 
@@ -10,8 +10,17 @@ rebuild :
 	make clean
 	make all
 
-$(APPLICATION_NAME) : $(FILES)
-	$(CC) $(FILES) -o $(APPLICATION_NAME)
+$(APPLICATION_NAME) : $(OBJ)
+	$(CC) $(OBJ) -o  $(APPLICATION_NAME)
+
+sudocon.u : sudocon.icn
+	$(CC) -c sudocon.icn
+
+io.u : io.icn
+	$(CC) -c io.icn
+
+solve.u : solve.icn
+	$(CC) -c solve.icn
 
 clean :
 	rm -f $(APPLICATION_NAME) $(OBJ)
