@@ -1,10 +1,16 @@
 procedure main(args)
 	fname := args[1]
 
-	if board := getBoard(fname) then {
+	if board := input(fname) then {
+		write("START:")
 		print(board)
 	} else {
 		write("sudocon: unable to read board")
 		exit
 	}
+
+	board := solve(board)
+
+	write("\nFINAL:")
+	print(board)
 end
