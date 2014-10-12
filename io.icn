@@ -1,0 +1,41 @@
+procedure getBoard(fname)
+	i := 1
+	L := list(81, "_")
+
+	if \fname & file := open(fname, "r") then {
+		fcontents := reads(file, -1)
+		close(file)
+	} else {
+		writes("sudocon: unable to open file ")
+		writes(fname);
+		write()
+
+		return &fail
+	}
+
+	write(fcontents)
+
+	fcontents ? {
+		while &pos <= *fcontents do {
+			if any('123456789_') then {
+				L[i] := move(1)
+				i := i + 1
+			} else {
+				move(1)
+			}
+		}
+	}
+
+	return L
+end
+
+procedure print(b)
+	i := 0
+
+	every val := !b do {
+		writes(val, " ")
+		if (i := (i +1) % 9) = 0 then write()
+	}
+
+	return b
+end
