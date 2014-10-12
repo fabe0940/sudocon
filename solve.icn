@@ -1,0 +1,78 @@
+procedure solve(b)
+	return solver(b)
+end
+
+procedure solver(b)
+	if validp(fullp(b)) then {
+		return b
+	} else if validp(b) then {
+		return _solver(copy(b))
+	} else {
+		return &fail
+	}
+end
+
+procedure _solver(b)
+	i := 1
+	while b[i] ~== "_" do i +:= 1
+
+	every val := 1 to 9 do {
+		b[i] := val
+		suspend solver(b)
+	}
+
+	return &fail
+end
+
+procedure fullp(b)
+	every val := !b do {
+		if val == "_" then {
+			return &fail
+		}
+	}
+	return b
+end
+
+procedure validp(b)
+	every i := 1 to *b do {
+		every ind := index(i) do {
+			if b[i] == b[ind] & b[i] ~== "_" then {
+				return &fail
+			}
+
+		}
+	}
+
+	return b
+end
+
+procedure index(i)
+	s := set()
+	every insert(s, row(i))
+	every insert(s, col(i))
+	every insert(s, sqr(i))
+	delete(s, i)
+	suspend !s
+end
+
+procedure row(i)
+	r := (i - 1) / 9
+	first := r * 9
+	final := first + 8
+	suspend (first to final) + 1
+end
+
+procedure col(i)
+	c := (i - 1) % 9
+	first := c
+	final := c + 72
+	suspend (first to final by 9) + 1
+end
+
+procedure sqr(i)
+	r := (i - 1) / 9
+	c := (i - 1) % 9
+	sqrr := r / 3
+	sqrc := c / 3
+	suspend ((sqrc * 3 to (sqrc * 3) + 2) + (9 * (sqrr * 3 to (sqrr * 3) + 2))) + 1
+end
