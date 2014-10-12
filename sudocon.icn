@@ -1,0 +1,10 @@
+procedure main(args)
+	fname := args[1]
+
+	if board := getBoard(fname) then {
+		print(board)
+	} else {
+		write("sudocon: unable to read board")
+		exit
+	}
+end
