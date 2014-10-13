@@ -1,0 +1,19 @@
+procedure main(args)
+	fname := args[1]
+
+	if board := input(fname) then {
+		write("START:")
+		print(board)
+	} else {
+		write("sudocon: unable to read board")
+		exit
+	}
+
+	if board := solve(board) then {
+		write("\nFINAL:")
+		print(board)
+	} else {
+		write("sudocon: unable to solve board")
+		exit
+	}
+end
