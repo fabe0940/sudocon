@@ -9,8 +9,11 @@ procedure main(args)
 		exit
 	}
 
-	board := solve(board)
-
-	write("\nFINAL:")
-	print(board)
+	if board := solve(board) then {
+		write("\nFINAL:")
+		print(board)
+	} else {
+		write("sudocon: unable to solve board")
+		exit
+	}
 end
